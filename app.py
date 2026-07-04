@@ -11,7 +11,7 @@ NumericC1 = df.select_dtypes(include="number").columns
 modelo = joblib.load("models/random_forest_regressor.joblib")
 
 df_inecMap = df_inecMap.dropna()
-geo_df = geo_df.dropna()
+
 
 ##LIMPIEZA DE DATOS PARA EL MAPA
 def limpiar(texto):
@@ -39,6 +39,7 @@ mapa_df = geo_df.merge(df_inec_agg, on="key", how="left")
 
 ##Creacion de app web
 app = Dash(__name__)
+server = app.server
 ## Graficos
 
 fig = px.histogram(
